@@ -18,6 +18,7 @@ export default function Page() {
   return (
     <main className="min-h-screen bg-paper text-ink">
       <Nav />
+
       <section id="home" className="mx-auto max-w-6xl px-6 pt-28 pb-12">
         <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight">A Delicious Selection</h1>
         <p className="mt-4 text-lg text-stone">Zero capex. Shared revenue.</p>
@@ -27,19 +28,18 @@ export default function Page() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-6xl px-6 py-8 grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div className="rounded-2xl p-6 text-white bg-ink">ink</div>
+        <div className="rounded-2xl p-6 border bg-paper">paper</div>
+        <div className="rounded-2xl p-6 bg-lavender">lavender</div>
+        <div className="rounded-2xl p-6 text-white bg-stone">stone</div>
+        <div className="rounded-2xl p-6 text-white bg-indigoDeep">indigoDeep</div>
+      </section>
+
       <section id="how" className="mx-auto max-w-6xl px-6 py-12 grid gap-6 md:grid-cols-3">
-        <div className="rounded-2xl border p-6">
-          <h3 className="text-xl font-bold">Site check</h3>
-          <p className="mt-2 text-stone">Placement and power.</p>
-        </div>
-        <div className="rounded-2xl border p-6">
-          <h3 className="text-xl font-bold">Install</h3>
-          <p className="mt-2 text-stone">Cashless setup.</p>
-        </div>
-        <div className="rounded-2xl border p-6">
-          <h3 className="text-xl font-bold">Restock</h3>
-          <p className="mt-2 text-stone">Remote monitoring.</p>
-        </div>
+        <div className="rounded-2xl border p-6"><h3 className="text-xl font-bold">Site check</h3><p className="mt-2 text-stone">Placement and power.</p></div>
+        <div className="rounded-2xl border p-6"><h3 className="text-xl font-bold">Install</h3><p className="mt-2 text-stone">Cashless setup.</p></div>
+        <div className="rounded-2xl border p-6"><h3 className="text-xl font-bold">Restock</h3><p className="mt-2 text-stone">Remote monitoring.</p></div>
       </section>
 
       <section id="machines" className="mx-auto max-w-6xl px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -72,10 +72,20 @@ export default function Page() {
       <section id="contact" className="mx-auto max-w-6xl px-6 py-16">
         <h2 className="text-3xl font-bold">Contact</h2>
         <p className="mt-2 text-stone">Tell us about your building.</p>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <a href="mailto:hello@delekt.com" className="rounded-lg px-5 py-3 bg-indigoDeep text-white">Email</a>
-          <a href="tel:+46" className="rounded-lg px-5 py-3 border">Call</a>
-        </div>
+        <form className="mt-8 grid gap-4 md:grid-cols-2" action="https://formspree.io/f/xwpqalvq" method="POST" acceptCharset="utf-8">
+          <input className="rounded-lg border p-3" type="text" name="building_address" placeholder="Address" required />
+          <input className="rounded-lg border p-3" type="text" name="city" placeholder="City" required />
+          <input className="rounded-lg border p-3" type="text" name="footfall" placeholder="Footfall" />
+          <input className="rounded-lg border p-3" type="text" name="power" placeholder="Power" />
+          <textarea className="rounded-lg border p-3 md:col-span-2" name="placement_notes" placeholder="Placement notes" rows={4}></textarea>
+          <input className="rounded-lg border p-3" type="text" name="contact_name" placeholder="Your name" required />
+          <input className="rounded-lg border p-3" type="email" name="email" placeholder="Email" required />
+          <input className="rounded-lg border p-3" type="tel" name="phone" placeholder="Phone" />
+          <input type="hidden" name="_subject" value="New Delekt lead" />
+          <input type="hidden" name="_next" value="https://delekt.com/preview/thanks" />
+          <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
+          <button className="md:col-span-2 rounded-lg px-5 py-3 bg-indigoDeep text-white" type="submit">Send</button>
+        </form>
       </section>
     </main>
   )
