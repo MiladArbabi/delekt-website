@@ -1,0 +1,4 @@
+.env.delekt
+_live-backup
+node_modules
+.DS_Store
