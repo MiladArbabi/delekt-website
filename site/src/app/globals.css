@@ -9,5 +9,6 @@
 }
 
 :root { color-scheme: light; }
+html { scroll-behavior: smooth; }
 body { background-color: var(--color-paper); color: var(--color-ink); }
 h1,h2,h3 { letter-spacing: -0.02em; }
