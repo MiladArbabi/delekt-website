@@ -1,6 +1,8 @@
 import ContactForm from "./ContactForm";
 import MachinesCarousel from "./MachinesCarousel";
 
+const machineImages = ["01.jpeg", "02.jpeg", "05.jpeg", "07.jpeg", "08.jpeg"];
+
 const Nav = () => (
   <nav className="fixed top-0 inset-x-0 z-50 bg-white/70 backdrop-blur border-b">
     <div className="mx-auto max-w-6xl px-6 h-14 flex items-center gap-4 text-sm">
@@ -57,7 +59,7 @@ export default function Page() {
 
       <section id="machines" className="mx-auto max-w-6xl px-6 py-12">
         <h2 className="text-3xl font-bold">Machines</h2>
-        <MachinesCarousel images={["vm1.jpeg", "vm2.jpeg", "vm3.jpeg", "vm4.jpeg", "vm5.jpeg"]} />
+        <MachinesCarousel images={machineImages} intervalMs={5000} />
       </section>
 
       <section id="revenue" className="bg-lavender">

@@ -1,72 +1,90 @@
 "use client";
+/* eslint-disable @next/next/no-img-element */
+import { useCallback, useEffect, useRef, useState } from "react";
 
-import Image from "next/image";
-import { useEffect, useState } from "react";
+type Props = { images: string[]; intervalMs?: number };
 
-type Props = {
-  images: string[];       // e.g. ["01.jpeg", "02.jpeg", ...]
-  intervalMs?: number;    // default 3000
-};
+export default function MachinesCarousel({ images = [], intervalMs = 5000 }: Props) {
+  const [index, setIndex] = useState(0);
+  const [next, setNext] = useState<number | null>(null);
+  const [go, setGo] = useState(false);
 
-export default function MachinesCarousel({ images, intervalMs = 3000 }: Props) {
-  const [i, setI] = useState(0);
+  const slidingRef = useRef(false);
+  const indexRef = useRef(index);
+  useEffect(() => { indexRef.current = index; }, [index]);
+
+  const preload = useCallback((file: string) =>
+    new Promise<void>((resolve) => {
+      const img = new window.Image();
+      img.src = `./machines/${file}`;
+      if (img.complete) return resolve();
+      img.onload = () => resolve();
+      img.onerror = () => resolve();
+    }), []);
+
+  const startSlide = useCallback(async (nxt: number) => {
+    slidingRef.current = true;
+    setNext(nxt);
+    setGo(false);
+
+    await preload(images[nxt]);
+
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => setGo(true))
+    );
+
+    setTimeout(() => {
+      setIndex(nxt);
+      setNext(null);
+      setGo(false);
+      slidingRef.current = false;
+    }, 520); // keep in sync with duration-500
+  }, [images, preload]);
 
   useEffect(() => {
-    if (images.length < 2) return;
-    const id = setInterval(() => setI((s) => (s + 1) % images.length), intervalMs);
-    return () => clearInterval(id);
-  }, [images.length, intervalMs]);
+    if (!images.length) return;
+    const tick = () => {
+      if (slidingRef.current) return;
+      const nxt = (indexRef.current + 1) % images.length;
+      startSlide(nxt);
+    };
+    const t = setInterval(tick, intervalMs);
+    return () => clearInterval(t);
+  }, [images.length, intervalMs, startSlide]);
 
   if (!images.length) return null;
 
-  const prev = (i - 1 + images.length) % images.length;
-  const next = (i + 1) % images.length;
+  const curFile  = images[index];
+  const nextFile = next != null ? images[next] : null;
+
+  const Img = ({ file, className = "", eager = false }: { file?: string; className?: string; eager?: boolean }) =>
+    file ? (
+      <img
+        src={`./machines/${file}`}
+        alt=""
+        loading={eager ? "eager" : "lazy"}
+        decoding="async"
+        draggable={false}
+        className={`absolute inset-0 w-full h-full object-cover select-none pointer-events-none ${className}`}
+        style={{ backfaceVisibility: "hidden", willChange: "transform" }}
+      />
+    ) : null;
 
   return (
-    <div className="mx-auto max-w-6xl px-6 py-12">
-      {/* 25% | 50% | 25% with faded sides */}
-      <div className="grid grid-cols-[25%_50%_25%] items-center gap-3">
-        <Frame dimmed>
-          <Image
-            src={`/machines/${images[prev]}`}
-            alt=""
-            fill
-            sizes="(min-width: 768px) 25vw, 90vw"
-            priority={false}
+    <div className="relative mx-auto max-w-6xl">
+      <div className="relative h-72 md:h-96 overflow-hidden rounded-2xl border bg-paper">
+        <Img
+          file={curFile}
+          eager
+          className={`transition-transform duration-500 ${nextFile && go ? "-translate-x-full" : "translate-x-0"}`}
+        />
+        {nextFile && (
+          <Img
+            file={nextFile}
+            className={`transition-transform duration-500 ${go ? "translate-x-0" : "translate-x-full"}`}
           />
-        </Frame>
-
-        <Frame>
-          <Image
-            src={`/machines/${images[i]}`}
-            alt=""
-            fill
-            sizes="(min-width: 768px) 50vw, 90vw"
-            priority
-          />
-        </Frame>
-
-        <Frame dimmed>
-          <Image
-            src={`/machines/${images[next]}`}
-            alt=""
-            fill
-            sizes="(min-width: 768px) 25vw, 90vw"
-          />
-        </Frame>
+        )}
       </div>
-    </div>
-  );
-}
-
-function Frame({ children, dimmed = false }: { children: React.ReactNode; dimmed?: boolean }) {
-  return (
-    <div
-      className={`relative h-56 md:h-80 rounded-2xl overflow-hidden transition-opacity duration-500 ${
-        dimmed ? "opacity-40" : ""
-      }`}
-    >
-      {children}
     </div>
   );
 }
