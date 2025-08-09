@@ -43,14 +43,6 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-8 grid grid-cols-2 md:grid-cols-5 gap-4">
-        <div className="rounded-2xl p-6 text-white bg-ink">ink</div>
-        <div className="rounded-2xl p-6 border bg-paper">paper</div>
-        <div className="rounded-2xl p-6 bg-lavender">lavender</div>
-        <div className="rounded-2xl p-6 text-white bg-stone">stone</div>
-        <div className="rounded-2xl p-6 text-white bg-indigoDeep">indigoDeep</div>
-      </section>
-
       <section id="how" className="mx-auto max-w-6xl px-6 py-16 md:py-20 grid gap-6 md:grid-cols-3">
         <Step n={1} title="Site check" text="Placement & power." />
         <Step n={2} title="Install" text="Cashless setup." />
