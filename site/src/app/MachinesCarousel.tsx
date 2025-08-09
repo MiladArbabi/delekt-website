@@ -6,7 +6,7 @@ type Props = { images: string[]; intervalMs?: number; };
 
 export default function MachinesCarousel({
   images = [],
-  intervalMs = 3000,
+  intervalMs = 75000,
 }: Props) {
   const [index, setIndex] = useState(0);
   const [next, setNext] = useState<number | null>(null); // when set, we animate
