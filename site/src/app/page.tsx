@@ -72,7 +72,7 @@ export default function Page() {
       <section id="contact" className="mx-auto max-w-6xl px-6 py-16">
         <h2 className="text-3xl font-bold">Contact</h2>
         <p className="mt-2 text-stone">Tell us about your building.</p>
-        <form className="mt-8 grid gap-4 md:grid-cols-2" action="https://formspree.io/f/YOUR_REAL_ID" method="POST" acceptCharset="utf-8">
+        <form className="mt-8 grid gap-4 md:grid-cols-2" action="https://formspree.io/f/xwpqalvq" method="POST" acceptCharset="utf-8">
           <input className="rounded-lg border p-3" type="text" name="building_address" placeholder="Address" required />
           <input className="rounded-lg border p-3" type="text" name="city" placeholder="City" required />
           <input className="rounded-lg border p-3" type="text" name="footfall" placeholder="Footfall" />
