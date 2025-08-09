@@ -23,7 +23,7 @@ export default function ContactForm() {
       if (res.ok) {
         setOk(true);
         setLoading(false);
-        setTimeout(() => { window.location.href = "/preview/thanks"; }, 1500);
+        setTimeout(() => { window.location.href = "/preview/thanks.html"; }, 1500);
       } else {
         setErr("Could not send. Try again.");
         setLoading(false);
