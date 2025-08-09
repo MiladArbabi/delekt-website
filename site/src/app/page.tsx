@@ -54,12 +54,41 @@ export default function Page() {
         <Step n={3} title="Restock" text="Remote monitoring." />
       </section>
 
-      <section id="machines" className="mx-auto max-w-6xl px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="rounded-2xl border p-6"><h3 className="text-xl font-bold">Snacks</h3></div>
-        <div className="rounded-2xl border p-6"><h3 className="text-xl font-bold">Drinks</h3></div>
-        <div className="rounded-2xl border p-6"><h3 className="text-xl font-bold">Essentials</h3></div>
-      </section>
+     <section id="machines" className="mx-auto max-w-6xl px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="rounded-2xl border p-6">
+        <h3 className="text-xl font-bold">Snacks</h3>
+        <p className="mt-2 text-stone">Sample mix</p>
+        <div className="mt-3 flex flex-wrap gap-2 text-sm">
+          <span className="rounded-full border px-3 py-1">Chips</span>
+          <span className="rounded-full border px-3 py-1">Chocolate</span>
+          <span className="rounded-full border px-3 py-1">Nuts</span>
+          <span className="rounded-full border px-3 py-1">Bars</span>
+        </div>
+      </div>
 
+      <div className="rounded-2xl border p-6">
+        <h3 className="text-xl font-bold">Drinks</h3>
+        <p className="mt-2 text-stone">Sample mix</p>
+        <div className="mt-3 flex flex-wrap gap-2 text-sm">
+          <span className="rounded-full border px-3 py-1">Water</span>
+          <span className="rounded-full border px-3 py-1">Soda</span>
+          <span className="rounded-full border px-3 py-1">Energy</span>
+          <span className="rounded-full border px-3 py-1">Juice</span>
+        </div>
+      </div>
+
+      <div className="rounded-2xl border p-6">
+        <h3 className="text-xl font-bold">Essentials</h3>
+        <p className="mt-2 text-stone">Sample mix</p>
+        <div className="mt-3 flex flex-wrap gap-2 text-sm">
+          <span className="rounded-full border px-3 py-1">Hygiene</span>
+          <span className="rounded-full border px-3 py-1">Pain relief</span>
+          <span className="rounded-full border px-3 py-1">Cables</span>
+          <span className="rounded-full border px-3 py-1">Masks</span>
+        </div>
+      </div>
+    </section>
+    
       <section id="revenue" className="bg-lavender">
         <div className="mx-auto max-w-6xl px-6 py-12">
           <h2 className="text-3xl font-bold">You earn monthly</h2>
