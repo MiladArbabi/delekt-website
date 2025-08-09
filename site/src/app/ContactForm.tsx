@@ -19,7 +19,7 @@ export default function ContactForm() {
         body: data
       });
       if (res.ok) {
-        window.location.href = "/preview/thanks";
+        window.location.href = "/preview/thanks.html";
       } else {
         setErr("Could not send. Try again.");
         setLoading(false);
