@@ -16,6 +16,16 @@ const Nav = () => (
   </nav>
 );
 
+function Step({ n, title, text }: { n: number, title: string, text: string }) {
+  return (
+    <div className="rounded-2xl border p-6">
+      <div className="h-8 w-8 rounded-full bg-indigoDeep text-white flex items-center justify-center font-bold">{n}</div>
+      <h3 className="mt-4 text-xl font-bold">{title}</h3>
+      <p className="mt-2 text-stone">{text}</p>
+    </div>
+  );
+}
+
 export default function Page() {
   return (
     <main className="min-h-screen bg-paper text-ink">
@@ -38,10 +48,10 @@ export default function Page() {
         <div className="rounded-2xl p-6 text-white bg-indigoDeep">indigoDeep</div>
       </section>
 
-      <section id="how" className="mx-auto max-w-6xl px-6 py-12 grid gap-6 md:grid-cols-3">
-        <div className="rounded-2xl border p-6"><h3 className="text-xl font-bold">Site check</h3><p className="mt-2 text-stone">Placement and power.</p></div>
-        <div className="rounded-2xl border p-6"><h3 className="text-xl font-bold">Install</h3><p className="mt-2 text-stone">Cashless setup.</p></div>
-        <div className="rounded-2xl border p-6"><h3 className="text-xl font-bold">Restock</h3><p className="mt-2 text-stone">Remote monitoring.</p></div>
+      <section id="how" className="mx-auto max-w-6xl px-6 py-16 md:py-20 grid gap-6 md:grid-cols-3">
+        <Step n={1} title="Site check" text="Placement & power." />
+        <Step n={2} title="Install" text="Cashless setup." />
+        <Step n={3} title="Restock" text="Remote monitoring." />
       </section>
 
       <section id="machines" className="mx-auto max-w-6xl px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
