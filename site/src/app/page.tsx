@@ -1,3 +1,5 @@
+import ContactForm from "./ContactForm";
+
 const Nav = () => (
   <nav className="fixed top-0 inset-x-0 z-50 bg-white/70 backdrop-blur border-b">
     <div className="mx-auto max-w-6xl px-6 h-14 flex items-center gap-4 text-sm">
@@ -12,7 +14,7 @@ const Nav = () => (
       </div>
     </div>
   </nav>
-)
+);
 
 export default function Page() {
   return (
@@ -72,21 +74,8 @@ export default function Page() {
       <section id="contact" className="mx-auto max-w-6xl px-6 py-16">
         <h2 className="text-3xl font-bold">Contact</h2>
         <p className="mt-2 text-stone">Tell us about your building.</p>
-        <form className="mt-8 grid gap-4 md:grid-cols-2" action="https://formspree.io/f/xwpqalvq" method="POST" acceptCharset="utf-8">
-          <input className="rounded-lg border p-3" type="text" name="building_address" placeholder="Address" required />
-          <input className="rounded-lg border p-3" type="text" name="city" placeholder="City" required />
-          <input className="rounded-lg border p-3" type="text" name="footfall" placeholder="Footfall" />
-          <input className="rounded-lg border p-3" type="text" name="power" placeholder="Power" />
-          <textarea className="rounded-lg border p-3 md:col-span-2" name="placement_notes" placeholder="Placement notes" rows={4}></textarea>
-          <input className="rounded-lg border p-3" type="text" name="contact_name" placeholder="Your name" required />
-          <input className="rounded-lg border p-3" type="email" name="email" placeholder="Email" required />
-          <input className="rounded-lg border p-3" type="tel" name="phone" placeholder="Phone" />
-          <input type="hidden" name="_subject" value="New Delekt lead" />
-          <input type="hidden" name="_next" value="https://delekt.com/preview/thanks" />
-          <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
-          <button className="md:col-span-2 rounded-lg px-5 py-3 bg-indigoDeep text-white" type="submit">Send</button>
-        </form>
+        <ContactForm />
       </section>
     </main>
-  )
+  );
 }
