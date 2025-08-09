@@ -1,4 +1,5 @@
 import ContactForm from "./ContactForm";
+import MachinesCarousel from "./MachinesCarousel";
 
 const Nav = () => (
   <nav className="fixed top-0 inset-x-0 z-50 bg-white/70 backdrop-blur border-b">
@@ -54,10 +55,9 @@ export default function Page() {
         <Step n={3} title="Restock" text="Remote monitoring." />
       </section>
 
-      <section id="machines" className="mx-auto max-w-6xl px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="rounded-2xl border p-6"><h3 className="text-xl font-bold">Snacks</h3></div>
-        <div className="rounded-2xl border p-6"><h3 className="text-xl font-bold">Drinks</h3></div>
-        <div className="rounded-2xl border p-6"><h3 className="text-xl font-bold">Essentials</h3></div>
+      <section id="machines" className="mx-auto max-w-6xl px-6 py-12">
+        <h2 className="text-3xl font-bold">Machines</h2>
+        <MachinesCarousel images={["vm1.jpeg", "vm2.jpeg", "vm3.jpeg", "vm4.jpeg", "vm5.jpeg"]} />
       </section>
 
       <section id="revenue" className="bg-lavender">
