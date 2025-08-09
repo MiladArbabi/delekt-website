@@ -19,7 +19,7 @@ export default function Page() {
     <main className="min-h-screen bg-paper text-ink">
       <Nav />
       <section id="home" className="mx-auto max-w-6xl px-6 pt-28 pb-12">
-        <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight">Sweden-wide vending</h1>
+        <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight">A Delicious Selection</h1>
         <p className="mt-4 text-lg text-stone">Zero capex. Shared revenue.</p>
         <div className="mt-8 flex flex-wrap gap-3">
           <a href="#revenue" className="rounded-lg px-5 py-3 bg-indigoDeep text-white">Revenue model</a>
