@@ -57,7 +57,9 @@ export default function Page() {
 
       <section id="machines" className="mx-auto max-w-6xl px-6 py-12">
         <h2 className="text-3xl font-bold">Machines</h2>
-        <MachinesCarousel images={["vm1.jpeg", "vm2.jpeg", "vm3.jpeg", "vm4.jpeg", "vm5.jpeg"]} />
+        <MachinesCarousel images={[
+            "01.jpeg","02.jpeg","03.jpeg","04.jpeg","05.jpeg",
+            "06.jpeg","07.jpeg","08.jpeg","09.jpeg","10.jpeg" ]}/>      
       </section>
 
       <section id="revenue" className="bg-lavender">
