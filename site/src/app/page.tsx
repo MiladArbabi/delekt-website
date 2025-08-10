@@ -30,6 +30,37 @@ const Nav = () => (
   </nav>
 );
 
+const Footer = () => (
+  <footer className="bg-lavender border-t">
+    <div className="mx-auto max-w-6xl px-6 py-10 flex flex-col items-center gap-5 text-sm text-ink">
+      <a href="#home" aria-label="Delekt home" className="block">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={"logo/delekt-logo-v02.png"}
+          alt="Delekt"
+          className="h-8 md:h-9 w-auto"
+          loading="eager"
+          decoding="async"
+          draggable={false}
+        />
+      </a>
+      <nav className="flex flex-wrap items-center justify-center gap-4">
+        <a href="#how">How</a>
+        <a href="#revenue">Revenue</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div className="text-center opacity-80 space-y-1">
+        <p>© {new Date().getFullYear()} Delekt</p>
+        <p>Rosstigen 3, 16 952, Solna</p>
+        <a href="mailto:info@delekt.com" className="underline decoration-dotted underline-offset-4">
+          info@delekt.com
+        </a>
+      </div>
+    </div>
+  </footer>
+);
+
 function Step({ n, title, text }: { n: number; title: string; text: string }) {
   return (
     <div className="rounded-2xl border p-6">
@@ -67,10 +98,12 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="how" className="mx-auto max-w-6xl px-6 py-16 md:py-20 grid gap-6 md:grid-cols-3">
-        <Step n={1} title="Site check" text="Placement & power." />
-        <Step n={2} title="Install" text="Cashless setup." />
-        <Step n={3} title="Restock" text="Remote monitoring." />
+      <section id="how" className="bg-lavender">
+        <div className="mx-auto max-w-6xl px-6 py-16 md:py-20 grid gap-6 md:grid-cols-3">
+          <Step n={1} title="Site check" text="Placement & power." />
+          <Step n={2} title="Install" text="Cashless setup." />
+          <Step n={3} title="Restock" text="Remote monitoring." />
+        </div>
       </section>
 
       <MachinesMixes />
@@ -95,6 +128,7 @@ export default function Page() {
         <p className="mt-2 text-stone">Tell us about your building.</p>
         <ContactForm />
       </section>
+      <Footer />
     </main>
   );
 }
