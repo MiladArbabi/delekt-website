@@ -1,3 +1,4 @@
+import ContactForm from "./ContactForm";
 import MachinesCarousel from "./MachinesCarousel";
 
 // Images live in /site/public/machines
@@ -68,14 +69,12 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Requirements */}
       <section id="requirements" className="mx-auto max-w-6xl px-6 py-12 grid gap-6 md:grid-cols-3">
         <div className="rounded-2xl border p-6"><h3 className="text-xl font-bold">Power</h3><p className="mt-2 text-stone">Standard outlet.</p></div>
         <div className="rounded-2xl border p-6"><h3 className="text-xl font-bold">Footprint</h3><p className="mt-2 text-stone">Compact placement.</p></div>
         <div className="rounded-2xl border p-6"><h3 className="text-xl font-bold">Noise</h3><p className="mt-2 text-stone">Low, lobby-ready.</p></div>
       </section>
 
-      {/* FAQ */}
       <section id="faq" className="mx-auto max-w-6xl px-6 py-12">
         <h2 className="text-3xl font-bold">FAQ</h2>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
@@ -84,7 +83,6 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Contact */}
       <section id="contact" className="mx-auto max-w-6xl px-6 py-16">
         <h2 className="text-3xl font-bold">Contact</h2>
         <p className="mt-2 text-stone">Tell us about your building.</p>
