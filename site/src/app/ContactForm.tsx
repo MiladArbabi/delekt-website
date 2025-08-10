@@ -34,9 +34,9 @@ export default function ContactForm() {
     <form onSubmit={onSubmit} className="mt-8 grid gap-4 md:grid-cols-2">
       <input className="rounded-lg border p-3" type="text" name="building_address" placeholder="Address" required />
       <input className="rounded-lg border p-3" type="text" name="city" placeholder="City" required />
-      <input className="rounded-lg border p-3" type="text" name="footfall" placeholder="Footfall" />
-      <input className="rounded-lg border p-3" type="text" name="power" placeholder="Power" />
-      <textarea className="rounded-lg border p-3 md:col-span-2" name="placement_notes" placeholder="Placement notes" rows={4}></textarea>
+      <input className="rounded-lg border p-3" type="text" name="footfall" placeholder="How many units?" />
+      <input className="rounded-lg border p-3" type="text" name="footfallnotes" placeholder="Residential or commercial?" />
+      <textarea className="rounded-lg border p-3 md:col-span-2" name="placement_notes" placeholder="Anything else about your location?" rows={4}></textarea>
       <input className="rounded-lg border p-3" type="text" name="contact_name" placeholder="Your name" required />
       <input className="rounded-lg border p-3" type="email" name="email" placeholder="Email" required />
       <input className="rounded-lg border p-3" type="tel" name="phone" placeholder="Phone" />
