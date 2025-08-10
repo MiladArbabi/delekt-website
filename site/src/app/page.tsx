@@ -1,5 +1,6 @@
 import ContactForm from "./ContactForm";
 import MachinesCarousel from "./MachinesCarousel";
+import MachinesMixes from "./MachinesMixes";
 
 // Images live in /site/public/machines
 const machineImages = ["01.jpeg", "02.jpeg", "05.jpeg", "07.jpeg", "08.jpeg"];
@@ -61,6 +62,8 @@ export default function Page() {
         <Step n={2} title="Install" text="Cashless setup." />
         <Step n={3} title="Restock" text="Remote monitoring." />
       </section>
+
+      <MachinesMixes />
 
       <section id="revenue" className="bg-lavender">
         <div className="mx-auto max-w-6xl px-6 py-12">
