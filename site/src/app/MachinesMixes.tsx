@@ -17,21 +17,6 @@ export default function MachinesMixes() {
     },
   ];
 
-  const mixes = [
-    {
-      title: "Snacks",
-      items: ["Lay’s", "Doritos", "Pringles", "KitKat", "Snickers", "Twix"],
-    },
-    {
-      title: "Drinks",
-      items: ["Coca-Cola", "Pepsi", "Fanta", "Sprite", "Red Bull", "Water"],
-    },
-    {
-      title: "Essentials",
-      items: ["Gum", "Mints", "Protein bar", "Trail mix"],
-    },
-  ];
-
   return (
     <section id="machines" className="mx-auto max-w-6xl px-6 py-12">
       <h2 className="text-3xl font-bold">Machines & mixes</h2>
@@ -48,25 +33,6 @@ export default function MachinesMixes() {
                 <li key={b}>{b}</li>
               ))}
             </ul>
-          </div>
-        ))}
-      </div>
-
-      {/* Example mixes */}
-      <div className="mt-10 grid gap-6 md:grid-cols-3">
-        {mixes.map((group) => (
-          <div key={group.title} className="rounded-2xl border p-6">
-            <h4 className="font-semibold">{group.title}</h4>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {group.items.map((it) => (
-                <span
-                  key={it}
-                  className="rounded-full border px-3 py-1 text-sm text-stone"
-                >
-                  {it}
-                </span>
-              ))}
-            </div>
           </div>
         ))}
       </div>

@@ -1,6 +1,7 @@
 import ContactForm from "./ContactForm";
 import MachinesCarousel from "./MachinesCarousel";
 import MachinesMixes from "./MachinesMixes";
+import Faq from "./Faq";
 
 // Images live in /site/public/machines
 const machineImages = ["01.jpeg", "02.jpeg", "05.jpeg", "07.jpeg", "08.jpeg"];
@@ -26,6 +27,56 @@ const Nav = () => (
           draggable={false}
         />
       </a>
+
+      {/* Socials */}
+      <div className="mt-2 flex items-center justify-center gap-4">
+        {/* LinkedIn */}
+        <a
+          href="https://www.linkedin.com/company/delekt-sweden"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Delekt on LinkedIn"
+          className="p-2 rounded-full hover:bg-white/50 transition"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            className="h-5 w-5 text-ink/80"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2h0a2 2 0 0 0-2 2v7h-4V8h4v2.2" />
+            <rect x="2" y="9" width="4" height="12" />
+            <circle cx="4" cy="4" r="2" />
+          </svg>
+        </a>
+        {/* Instagram */}
+        <a
+          href="https://www.instagram.com/delekt_ab/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Delekt on Instagram"
+          className="p-2 rounded-full hover:bg-white/50 transition"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            className="h-5 w-5 text-ink/80"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="2" y="2" width="20" height="20" rx="5" />
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+            <path d="M17.5 6.5h.01" />
+          </svg>
+        </a>
+      </div>
     </div>
   </nav>
 );
@@ -44,6 +95,56 @@ const Footer = () => (
           draggable={false}
         />
       </a>
+
+      {/* Socials */}
+      <div className="mt-2 flex items-center justify-center gap-4">
+        {/* LinkedIn */}
+        <a
+          href="https://www.linkedin.com/company/delekt-sweden"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Delekt on LinkedIn"
+          className="p-2 rounded-full hover:bg-white/50 transition"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            className="h-5 w-5 text-ink/80"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2h0a2 2 0 0 0-2 2v7h-4V8h4v2.2" />
+            <rect x="2" y="9" width="4" height="12" />
+            <circle cx="4" cy="4" r="2" />
+          </svg>
+        </a>
+        {/* Instagram */}
+        <a
+          href="https://www.instagram.com/delekt_ab/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Delekt on Instagram"
+          className="p-2 rounded-full hover:bg-white/50 transition"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            className="h-5 w-5 text-ink/80"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="2" y="2" width="20" height="20" rx="5" />
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+            <path d="M17.5 6.5h.01" />
+          </svg>
+        </a>
+      </div>
       <nav className="flex flex-wrap items-center justify-center gap-4">
         <a href="#how">How</a>
         <a href="#revenue">Revenue</a>
@@ -116,10 +217,8 @@ export default function Page() {
       </section>
 
       <section id="faq" className="mx-auto max-w-6xl px-6 py-12">
-        <h2 className="text-3xl font-bold">FAQ</h2>
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
-          <div><h4 className="font-semibold">Costs?</h4><p className="text-stone">Zero capex.</p></div>
-          <div><h4 className="font-semibold">Products?</h4><p className="text-stone">Tailored mixes.</p></div>
+        <div className="mt-6">
+          <Faq />
         </div>
       </section>
 
