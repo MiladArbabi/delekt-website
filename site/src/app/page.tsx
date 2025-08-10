@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ContactForm from "./ContactForm";
 import MachinesCarousel from "./MachinesCarousel";
 import MachinesMixes from "./MachinesMixes";
@@ -16,6 +17,16 @@ const Nav = () => (
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
       </div>
+      <a href="#home" className="ml-auto" aria-label="Delekt home">
+        <Image
+          src="logo/delekt-logo-v02.png"
+          alt="Delekt logo"
+          width={250}
+          height={150}
+          className="h-6 w-auto"
+          priority
+        />
+      </a>
     </div>
   </nav>
 );
