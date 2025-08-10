@@ -1,4 +1,3 @@
-import Image from "next/image";
 import ContactForm from "./ContactForm";
 import MachinesCarousel from "./MachinesCarousel";
 import MachinesMixes from "./MachinesMixes";
@@ -13,18 +12,18 @@ const Nav = () => (
       <div className="hidden md:flex gap-4">
         <a href="#how">How</a>
         <a href="#revenue">Revenue</a>
-        <a href="#requirements">Requirements</a>
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
       </div>
-      <a href="#home" className="ml-auto" aria-label="Delekt home">
-        <Image
-          src="logo/delekt-logo-v02.png"
-          alt="Delekt logo"
-          width={250}
-          height={150}
-          className="h-6 w-auto"
-          priority
+      <a href="#home" className="ml-auto shrink-0" aria-label="Delekt home">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={"logo/delekt-logo-v02.png"} 
+          alt="Delekt"
+          className="block h-6 md:h-7 lg:h-8 w-auto"
+          loading="eager"
+          decoding="async"
+          draggable={false}
         />
       </a>
     </div>
@@ -81,12 +80,6 @@ export default function Page() {
           <h2 className="text-3xl font-bold">You earn monthly</h2>
           <p className="mt-2 text-stone">Transparent share of sales.</p>
         </div>
-      </section>
-
-      <section id="requirements" className="mx-auto max-w-6xl px-6 py-12 grid gap-6 md:grid-cols-3">
-        <div className="rounded-2xl border p-6"><h3 className="text-xl font-bold">Power</h3><p className="mt-2 text-stone">Standard outlet.</p></div>
-        <div className="rounded-2xl border p-6"><h3 className="text-xl font-bold">Footprint</h3><p className="mt-2 text-stone">Compact placement.</p></div>
-        <div className="rounded-2xl border p-6"><h3 className="text-xl font-bold">Noise</h3><p className="mt-2 text-stone">Low, lobby-ready.</p></div>
       </section>
 
       <section id="faq" className="mx-auto max-w-6xl px-6 py-12">
