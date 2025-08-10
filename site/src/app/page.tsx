@@ -1,6 +1,7 @@
 import ContactForm from "./ContactForm";
 import MachinesCarousel from "./MachinesCarousel";
 
+// Images live in /site/public/machines
 const machineImages = ["01.jpeg", "02.jpeg", "05.jpeg", "07.jpeg", "08.jpeg"];
 
 const Nav = () => (
@@ -9,7 +10,6 @@ const Nav = () => (
       <a href="#home" className="font-semibold">Delekt</a>
       <div className="hidden md:flex gap-4">
         <a href="#how">How</a>
-        <a href="#machines">Machines</a>
         <a href="#revenue">Revenue</a>
         <a href="#requirements">Requirements</a>
         <a href="#faq">FAQ</a>
@@ -19,7 +19,7 @@ const Nav = () => (
   </nav>
 );
 
-function Step({ n, title, text }: { n: number, title: string, text: string }) {
+function Step({ n, title, text }: { n: number; title: string; text: string }) {
   return (
     <div className="rounded-2xl border p-6">
       <div className="h-8 w-8 rounded-full bg-indigoDeep text-white flex items-center justify-center font-bold">{n}</div>
@@ -36,10 +36,23 @@ export default function Page() {
 
       <section id="home" className="mx-auto max-w-6xl px-6 pt-28 pb-12">
         <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight">A Delicious Selection</h1>
-        <p className="mt-4 text-lg text-stone">Zero capex. Shared revenue.</p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <a href="#revenue" className="rounded-lg px-5 py-3 bg-indigoDeep text-white">Revenue model</a>
-          <a href="#contact" className="rounded-lg px-5 py-3 border">Request machine</a>
+
+        {/* Carousel under headline */}
+        <div className="mt-6">
+          <MachinesCarousel images={machineImages} intervalMs={5000} />
+        </div>
+
+        {/* Subheadline */}
+        <p className="mt-6 text-lg text-stone">Zero capex. Shared revenue.</p>
+
+        {/* CTAs (kept compact) */}
+        <div className="mt-6 flex flex-wrap gap-3">
+          <a href="#revenue" className="inline-flex items-center justify-center rounded-lg px-5 py-3 bg-indigoDeep text-white">
+            Revenue model
+          </a>
+          <a href="#contact" className="inline-flex items-center justify-center rounded-lg px-5 py-3 border">
+            Request machine
+          </a>
         </div>
       </section>
 
@@ -47,11 +60,6 @@ export default function Page() {
         <Step n={1} title="Site check" text="Placement & power." />
         <Step n={2} title="Install" text="Cashless setup." />
         <Step n={3} title="Restock" text="Remote monitoring." />
-      </section>
-
-      <section id="machines" className="mx-auto max-w-6xl px-6 py-12">
-        <h2 className="text-3xl font-bold">Machines</h2>
-        <MachinesCarousel images={machineImages} intervalMs={5000} />
       </section>
 
       <section id="revenue" className="bg-lavender">

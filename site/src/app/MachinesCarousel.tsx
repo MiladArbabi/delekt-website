@@ -8,43 +8,45 @@ export default function MachinesCarousel({ images = [], intervalMs = 5000 }: Pro
   const [index, setIndex] = useState(0);
   const [next, setNext] = useState<number | null>(null);
   const [go, setGo] = useState(false);
-
   const slidingRef = useRef(false);
-  const indexRef = useRef(index);
+  const indexRef = useRef(0);
+
   useEffect(() => { indexRef.current = index; }, [index]);
 
-  const preload = useCallback((file: string) =>
-    new Promise<void>((resolve) => {
+  const preload = useCallback((file: string) => {
+    return new Promise<void>((resolve) => {
       const img = new window.Image();
       img.src = `./machines/${file}`;
       if (img.complete) return resolve();
       img.onload = () => resolve();
       img.onerror = () => resolve();
-    }), []);
+    });
+  }, []);
 
   const startSlide = useCallback(async (nxt: number) => {
+    if (slidingRef.current) return;
     slidingRef.current = true;
     setNext(nxt);
     setGo(false);
 
+    // ensure incoming is cached to avoid blank gap
     await preload(images[nxt]);
 
-    requestAnimationFrame(() =>
-      requestAnimationFrame(() => setGo(true))
-    );
+    // double-RAF so initial transform is committed before animating
+    requestAnimationFrame(() => requestAnimationFrame(() => setGo(true)));
 
+    const durationMs = 500;
     setTimeout(() => {
       setIndex(nxt);
       setNext(null);
       setGo(false);
       slidingRef.current = false;
-    }, 520); // keep in sync with duration-500
+    }, durationMs + 20);
   }, [images, preload]);
 
   useEffect(() => {
     if (!images.length) return;
     const tick = () => {
-      if (slidingRef.current) return;
       const nxt = (indexRef.current + 1) % images.length;
       startSlide(nxt);
     };
@@ -54,13 +56,21 @@ export default function MachinesCarousel({ images = [], intervalMs = 5000 }: Pro
 
   if (!images.length) return null;
 
-  const curFile  = images[index];
+  const curFile = images[index];
   const nextFile = next != null ? images[next] : null;
 
-  const Img = ({ file, className = "", eager = false }: { file?: string; className?: string; eager?: boolean }) =>
+  const Img = ({
+    file,
+    className = "",
+    eager = false,
+  }: {
+    file?: string;
+    className?: string;
+    eager?: boolean;
+  }) =>
     file ? (
       <img
-        src={`./machines/${file}`}
+        src={`./machines/${file}`} // resolves under /preview
         alt=""
         loading={eager ? "eager" : "lazy"}
         decoding="async"
@@ -72,12 +82,14 @@ export default function MachinesCarousel({ images = [], intervalMs = 5000 }: Pro
 
   return (
     <div className="relative mx-auto max-w-6xl">
-      <div className="relative h-72 md:h-96 overflow-hidden rounded-2xl border bg-paper">
+      <div className="relative h-64 md:h-96 overflow-hidden rounded-2xl border bg-paper">
+        {/* current */}
         <Img
           file={curFile}
           eager
           className={`transition-transform duration-500 ${nextFile && go ? "-translate-x-full" : "translate-x-0"}`}
         />
+        {/* incoming (only mounted during animation) */}
         {nextFile && (
           <Img
             file={nextFile}
