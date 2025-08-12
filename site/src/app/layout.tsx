@@ -3,6 +3,8 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 import Script from "next/script";
+import Analytics from "../components/Analytics";
+import { Suspense } from 'react';
 
 const montserrat = Montserrat({ subsets: ['latin'], weight: ['700','800'], display: 'swap' })
 
@@ -121,8 +123,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             ],
           })}
         </Script>
+      {/* Google Analytics 4 */}
+        <Script
+          id="ga-src"
+          src="https://www.googletagmanager.com/gtag/js?id=G-CTYDNMW9QK"
+          strategy="afterInteractive"
+        />
+        <Script id="ga-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = window.gtag || gtag;
+            gtag('js', new Date());
+            // Avoid duplicate pageviews; we’ll send them manually in <Analytics/>
+            gtag('config', 'G-CTYDNMW9QK', { send_page_view: false });
+          `}
+        </Script>
       </head>
       <body className={`${montserrat.className} bg-paper text-ink antialiased`}>
+        <Suspense fallback={null}>
+          <Analytics />
+        </Suspense>
         {children}
       </body>
     </html>
