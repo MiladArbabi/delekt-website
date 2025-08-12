@@ -38,6 +38,7 @@ export default function MachinesCarousel({ images = [], intervalMs = 5000 }: Pro
     const durationMs = 500;
     setTimeout(() => {
       setIndex(nxt);
+      try { window.plausible?.("Carousel Advance"); } catch {}
       setNext(null);
       setGo(false);
       slidingRef.current = false;

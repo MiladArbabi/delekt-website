@@ -70,7 +70,10 @@ export default function Faq() {
           {firstFour.map((item, idx) => (
             <button
               key={item.q}
-              onClick={() => setActive(idx)}
+              onClick={() => {
+                try { window.plausible?.("FAQ Open", { props: { q: item.q } }); } catch {}
+                setActive(idx);
+              }}
               className="text-left rounded-2xl border p-4 hover:bg-white/40 focus:outline-none focus:ring-2 focus:ring-indigo-200"
             >
               <h4 className="font-semibold">{item.q}</h4>
@@ -89,7 +92,10 @@ export default function Faq() {
             aria-expanded={showAll}
             aria-controls="faq-more"
             aria-label={showAll ? "Hide extra questions" : "Show more questions"}
-            onClick={() => setShowAll(v => !v)}
+            onClick={() => {
+              try { window.plausible?.(showAll ? "FAQ Collapse" : "FAQ Expand"); } catch {}
+              setShowAll(v => !v);
+              }}
             className={`relative z-10 h-10 w-10 rounded-full border bg-white/80 backdrop-blur shadow-sm transition-transform duration-300 hover:bg-white ${
               showAll ? "rotate-180" : "rotate-0"
             }`}
@@ -121,7 +127,10 @@ export default function Faq() {
           {rest.map((item, idx) => (
             <button
               key={item.q}
-              onClick={() => setActive(idx + 4)}
+              onClick={() => {
+                try { window.plausible?.("FAQ Open", { props: { q: item.q } }); } catch {}
+                setActive(idx + 4)
+              }}
               className="text-left rounded-2xl border p-4 hover:bg-white/40 focus:outline-none focus:ring-2 focus:ring-indigo-200"
             >
               <h4 className="font-semibold">{item.q}</h4>

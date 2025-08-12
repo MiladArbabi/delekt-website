@@ -1,0 +1,5 @@
+/preview              /        301
+/preview/             /        301
+/preview/*            /:splat  301
+/preview/thanks.html  /thanks  301
+/thanks.html          /thanks  301

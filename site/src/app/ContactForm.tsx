@@ -19,7 +19,16 @@ export default function ContactForm() {
         body: data
       });
       if (res.ok) {
-        window.location.href = "/preview/thanks.html";
+        // Track submit, then redirect (callback ensures the hit is sent)
+        try {
+          window.plausible?.("Contact Form Submitted", {
+            callback: () => (window.location.href = "/preview/thanks.html"),
+          });
+          // Fallback if plausible isn't available
+          setTimeout(() => (window.location.href = "/preview/thanks.html"), 250);
+        } catch {
+          window.location.href = "/preview/thanks.html";
+        }
       } else {
         setErr("Could not send. Try again.");
         setLoading(false);
